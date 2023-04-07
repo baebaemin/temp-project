@@ -8,6 +8,14 @@
   <title>Document</title>
 </head>
 <body>
+  {% if user.is_authenticated %}
+    <a href="{% url 'accounts:logout' %}">로긔아웃</a>
+    <a href="{% url 'accounts:update' %}">정보수정하긔</a>
+    <a href="{% url 'accounts:delete' %}">탈퇴하긔 ㅠ?</a>
+  {% else %}
+    <a href="{% url 'accounts:login' %}">로긘?</a>
+    <a href="{% url 'accounts:signup' %}">[합류하기]</a>
+  {% endif %}
   {% block content %}
   
   {% endblock content %}

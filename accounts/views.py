@@ -40,12 +40,12 @@ def signup(request):
 
 def update(request):
     if request.method == "POST":
-        form = CustomUserChangeForm(request.POST)
+        form = CustomUserChangeForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            redirect("movies:index")
+            return redirect("movies:index")
     else:
-        form = CustomUserChangeForm()
+        form = CustomUserChangeForm(instance=request.user)
     context = {
         'form':form,
     }
